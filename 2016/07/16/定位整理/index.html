@@ -1,0 +1,939 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="不忘初心，方得始终" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="现在基本上所有的应用中都需要添加定位功能，为了方便客户的使用和收集相应的数据，定位这个功能也显得非常重要，下面我们来看看到底iOS的定位都有哪些涉及到的细节">
+<meta property="og:type" content="article">
+<meta property="og:title" content="定位整理">
+<meta property="og:url" content="http://shenyinghao.github.io/2016/07/16/定位整理/index.html">
+<meta property="og:site_name" content="不忘初心，方得始终">
+<meta property="og:description" content="现在基本上所有的应用中都需要添加定位功能，为了方便客户的使用和收集相应的数据，定位这个功能也显得非常重要，下面我们来看看到底iOS的定位都有哪些涉及到的细节">
+<meta property="og:updated_time" content="2016-11-22T03:27:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="定位整理">
+<meta name="twitter:description" content="现在基本上所有的应用中都需要添加定位功能，为了方便客户的使用和收集相应的数据，定位这个功能也显得非常重要，下面我们来看看到底iOS的定位都有哪些涉及到的细节">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 定位整理 | 不忘初心，方得始终 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">不忘初心，方得始终</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">http://shenyinghao.github.io</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                定位整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-16T14:12:09+08:00" content="2016-07-16">
+              2016-07-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/16/定位整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/16/定位整理/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/16/定位整理/" class="leancloud_visitors" data-flag-title="定位整理">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>现在基本上所有的应用中都需要添加定位功能，为了方便客户的使用和收集相应的数据，定位这个功能也显得非常重要，下面我们来看看到底iOS的定位都有哪些涉及到的细节</p>
+<a id="more"></a>
+<h2 id="定位服务的几个分类"><a href="#定位服务的几个分类" class="headerlink" title="定位服务的几个分类"></a>定位服务的几个分类</h2><ul>
+<li>Wi-Fi。通过 Wi-Fi 路由器的地理位置信息查询,比较省电。iPhone、iPod touch 和 iPad 都可以采用这种方式定位。</li>
+<li>蜂窝式移动电话基站。通过移动运用商基站定位。只有 iPhone、3G 版本的 iPod touch和iPad可以采用这种方式定位。</li>
+<li>GPS 卫星。通过 GPS 卫星位置定位,这种方式最为准确,但是耗电量大,不能遮挡。iPhone、iPod touch 和 iPad 都可以采用这种方式定位。</li>
+<li>iBeacon 微定位。iOS 7支持iBeacon技术,iBeacon 技术是苹果公司研发的,它使用低功耗蓝牙技术,通过多个 iBeacon 基站可以创建一个信号区域(地理围栏),当设备进入该区域时,相应的应用程序便会提示用户进入了这个地理围栏。</li>
+</ul>
+<p>在对定位服务编程时,iOS 不像 Android 系统可以指定采用哪种途径进行定位。iOS 的 API 把底层这些细节屏蔽掉了,开发人员和用户并不知道现在设备是采用哪种方式进行定位的(微定位除外),iOS 系统会根据设备的情况 和周围的环境采用一套最佳的解决方案。</p>
+<p>也就是说,如果能够接收 GPS 信息,那么设备优先采用 GPS 定位,否则采用Wi-Fi 或蜂窝基站定位。在 Wi-Fi 和蜂窝基站之间,优先使用 Wi-Fi,如果无法连接 Wi-Fi 才使用蜂窝基站定位。</p>
+<h2 id="定位服务编程"><a href="#定位服务编程" class="headerlink" title="定位服务编程"></a>定位服务编程</h2><p>在 iOS 7 中,定位服务有比较大的变化,主要使用 Core Location 框架,定位时主要使用 CLLocationManager、 CLLocationManagerDelegate 和 CLLocation 这3个类,下面简要介绍一下它们。</p>
+<ul>
+<li><p>CLLocationManager  用于定位服务管理类,它能够给我们提供位置信息和高度信息,也可以监控设备 进入或离开某个区域,还可以获得设备的运行方向等。</p>
+</li>
+<li><p>CLLocationManagerDelegate  它是 CLLocationManager 类的委托协议。</p>
+</li>
+<li><p>CLLocation  该类封装了位置和高度信息。</p>
+</li>
+</ul>
+<p>在定位服务的应用中,第一次请求位置信息时,系统会提示用户是否允许开启定位服务。如图所示,用户所在的位置是比较私密的信息,应用获取这些信息时,用户是有知情权和否定权的。如果应用在用户不知情的情况下获得其位置信息,这在某些国家是违法的。 </p>
+<p>如果用户“不允许”,定位服务就无法获得位置信息了。如果想改变这些设置,可以在系统“设置”应用中 开启或关闭。</p>
+<p>当应用开启的时候，开始定位；如果设备位置发生变化,也会重新获取位置信息。</p>
+<h3 id="xcode和相关代码"><a href="#xcode和相关代码" class="headerlink" title="xcode和相关代码"></a>xcode和相关代码</h3><ul>
+<li><p>首先, Xcode中添加“CoreLocation.framework”<br>为工程引入 Core Location 框架,具体步骤是选择工程中的 TARGETS → Build Phases → Link Binary With Libraries,选择右下角的 + 按钮,打开“选择要添加的框架和库”对话框,如图所示。【备注：在XCode5之前我们需要用到的框架修需要手动导入】</p>
+</li>
+<li><p>CoreLocation框架的主头文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;CoreLocation/CoreLocation.h&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>声明管理器和代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface ViewController ()&lt;CLLocationManagerDelegate&gt;</div><div class="line">@property (nonatomic, strong) CLLocationManager* locationManager;</div><div class="line">@end</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化管理器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">self.locationManager = [[CLLocationManager alloc] init];</div><div class="line">self.locationManager.delegate = self;</div><div class="line">self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;</div></pre></td></tr></table></figure>
+</li>
+<li><p>开启定位服务，需要定位时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/** 由于IOS8中定位的授权机制改变 需要进行手动授权</div><div class="line">* 获取授权认证，两个方法：</div><div class="line">* [self.locationManager requestWhenInUseAuthorization];</div><div class="line">* [self.locationManager requestAlwaysAuthorization];</div><div class="line">*/</div><div class="line">/// 使用这个</div><div class="line">if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) &#123;</div><div class="line">NSLog(@&quot;requestAlwaysAuthorization&quot;);</div><div class="line">[self.locationManager requestAlwaysAuthorization];</div><div class="line">&#125;</div><div class="line">/// 或者是下面的这个方法</div><div class="line">if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])</div><div class="line">&#123;</div><div class="line">[self.locationManager requestWhenInUseAuthorization];</div><div class="line">&#125;</div><div class="line">/// 上面的这两个可以根据需求任选一个（ios8之后），就算是两个都写上，也只会提示你第一个写的内容；</div><div class="line">/// 开始定位，不断调用其代理方法</div><div class="line">[self.locationManager startUpdatingLocation];</div><div class="line">NSLog(@&quot;start gps&quot;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>从iOS6开始,想要获取用户的隐私（通讯录、日历、相机、定位、相册等）,系统会自动弹框请求授权</p>
+</li>
+<li><p>在iOS8.0之前,为了提高用户点击允许授权的机率,通常会在info.plist中配置对应的key（Privacy - Location Usage Description）用来说明定位目的</p>
+</li>
+<li><p>重大位置改变监听</p>
+</li>
+<li>当位置发生较大变化后会调用这个服务（基于基站定位，所以必须要有电话模块）调用<code>[_manager startMonitoringSignificantLocationChanges]</code></li>
+<li>优势：当APP被完全关闭后，也可以接收到位置通知，并且让APP进入后台处理，耗电量小</li>
+<li><p>劣势：定位精度相对于标准定位服务较低，更新的频率根据当前位置附近的基站密度决定</p>
+</li>
+<li><p>后台继续定位</p>
+</li>
+<li>如果想要在后台继续进行定位，需要打开后台的定位模式;</li>
+</ul>
+<p>标准的定位服务（基于GPS/Wifi/基站的定位服务）,程序被完全关闭后就无法再获取位置信息<br>显著位置变化定位服务（基于基站的定位服务，设备必须有电话模块支持）;当APP被完全关闭后，也可以接收到位置通知，并且让APP进入后台处理;定位精度相对于标准定位服务较低，耗电量小，更新的频率根据当前位置附近的基站密度决定</p>
+<h4 id="iOS8之后定位的一些注意事项"><a href="#iOS8之后定位的一些注意事项" class="headerlink" title="iOS8之后定位的一些注意事项"></a>iOS8之后定位的一些注意事项</h4><ul>
+<li><p>从iOS8开始，苹果进一步加强了对用户隐私的保护，当APP想访问用户隐私信息的时候，系统不再自动弹出对话框让用户授权，为了能让系统自动弹出用户授权界面，需要进行下面设置<br>解决方案：调用iOS8的API，主动请求用户授权</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 注意：根据官方文档的解释，在使用下面2个方法的时候，如果不在info.plist中配置NSLocationWhenInUseUsageDescription这个key，那么方法都不会生效</div><div class="line">// 请求前台定位授权</div><div class="line">- (void)requestWhenInUseAuthorization</div><div class="line"></div><div class="line">// 如果不在info.plist中配置`NSLocationAlwaysUsageDescription`这个key，那么方法都不会生效</div><div class="line">// 请求前后台定位授权</div><div class="line">- (void)requestAlwaysAuthorization</div></pre></td></tr></table></figure>
+</li>
+<li><p>一般我们适配版本都会判断当前设备的版本，然后再进行相应的适配操作，这边就介绍另一种比较简单的适配方式 【通过respondsToSelector：方法来判断方法是否可响应，可以的话再执行】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">if ([_manager respondsToSelector:@selector(requestWhenInUseAuthorization)])</div><div class="line">&#123;</div><div class="line">// 需要注意的是，必须在info.plist文件中配置’NSLocationWhenInUseUsageDescription‘这个key，否则下面方法无效（官方注释有提到）</div><div class="line">// 请求前台授权</div><div class="line">[_manager requestWhenInUseAuthorization];</div><div class="line">&#125;</div><div class="line">/// 或者</div><div class="line">if ([_manager respondsToSelector:@selector(requestAlwaysAuthorization)]) </div><div class="line">&#123;</div><div class="line">// 请求前后台授权（无论是否开启后台模式都可以获取位置信息，并且不会出现蓝条提示）</div><div class="line">[_manager requestAlwaysAuthorization];</div><div class="line">&#125;</div><div class="line">/// 上面的这两个可以根据需求任选一个，就算是两个都写上，也只会显示你第一个写的内容；</div></pre></td></tr></table></figure>
+</li>
+<li><p>iOS9定位变化</p>
+</li>
+<li>前台定位于iOS8无变化</li>
+<li>后台定位</li>
+<li>方法一：在前台定位授权基础上，勾选后台模式location updates之后，需要额外设置属性allowsBackgroundLocationUpdates = YES</li>
+<li>方法二：直接请求前后台定位授权，设置属性allowsBackgroundLocationUpdates = YES，开启后台模式</li>
+</ul>
+<h2 id="定位服务未开启或者被用户真正拒绝情况下的情况处理"><a href="#定位服务未开启或者被用户真正拒绝情况下的情况处理" class="headerlink" title="定位服务未开启或者被用户真正拒绝情况下的情况处理"></a>定位服务未开启或者被用户真正拒绝情况下的情况处理</h2><ul>
+<li>iOS8之前，需要将开启授权的截图展示给用户，让用户根据截图去开启授权</li>
+<li>iOS8之后，会自动弹出设置窗口，让用户选择是否需要开启授权</li>
+<li>iOS开始我们可以根据URL直接跳转到相应的设置界面</li>
+</ul>
+<h2 id="获取位置信息"><a href="#获取位置信息" class="headerlink" title="获取位置信息"></a>获取位置信息</h2><ul>
+<li>根据获取的位置信息计算用户行走方向，行走距离，偏移角度</li>
+<li>coordinate:经纬度信息</li>
+<li>altitude：海拔</li>
+<li>horizontalAccuracy:水平方向精度，值为负数时，表示无效</li>
+<li>verticalAccuracy:判断海拔是否为负数，负数无效</li>
+<li>course:航向（0~359.9）</li>
+<li>floor:楼层（使用的楼层需要注册，否则无法使用）</li>
+<li>distanceFromLocation:计算2点之间的物理直线距离</li>
+<li>区域监听</li>
+<li><p>区域监听就是根据需求指定一块区域，当用户持设备进入或离开指定区域，我们都可以监听到</p>
+</li>
+<li><p>iOS8开始，想要做区域监听，必须请求位置授权（因为区域监听原理就是获取用户位置，然后判断位置是否在设定的区域内，涉及到用户隐私）</p>
+</li>
+<li>注意：<br>1.必须请求用户定位授权<br>2.使用前先判断区域监听是否可用<br>3.判断区域半径是否大于最大监听区域，如果大于最大监听区域范围，则无法监听成功</li>
+</ul>
+<h2 id="地理编码和反地理编码"><a href="#地理编码和反地理编码" class="headerlink" title="地理编码和反地理编码"></a>地理编码和反地理编码</h2><ul>
+<li><p>地理编码：指根据地质关键字，将其转换成对应的经纬度等信息</p>
+</li>
+<li><p>反地理编码：指根据经纬度信息，将其转换成对应的省市区等信息</p>
+</li>
+<li><p>CLPlacemark（地表对象）</p>
+</li>
+<li><p>location：CLLocation类型，位置对象的信息，包含经纬度，海拔等<br>region：CLRegion类型，地表对象对应区域<br>addressDictionary：NSDictionary类型，存放省市，街道等信息<br>name：NSString类型，地址全称<br>thoroughfare：NSString类型，街道名称<br>locality：NSString类型，城市名称<br>administrativeArea：NSString类型，省名称<br>country：NSString类型，国家名称</p>
+</li>
+<li><p>注意</p>
+</li>
+<li>必须联网</li>
+<li>有时候反地理编码时会找不到对应信息，需要尝试更换经纬度</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/15/阿豪的世界/" rel="next" title="阿豪的世界">
+                <i class="fa fa-chevron-left"></i> 阿豪的世界
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/26/ffmpeg-入门配置/" rel="prev" title="ffmpeg 入门配置">
+                ffmpeg 入门配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/16/定位整理/"
+     data-title="定位整理"
+     data-content=""
+     data-url="http://shenyinghao.github.io/2016/07/16/定位整理/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/16/定位整理/"
+           data-title="定位整理" data-url="http://shenyinghao.github.io/2016/07/16/定位整理/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oflibv95o.bkt.clouddn.com/85e738e9f857a4349918fb90df64d849.jpg"
+               alt="shy-boy" />
+          <p class="site-author-name" itemprop="name">shy-boy</p>
+          <p class="site-description motion-element" itemprop="description">道法自然，殊途同归！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/shenyinghao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定位服务的几个分类"><span class="nav-text">定位服务的几个分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位服务编程"><span class="nav-text">定位服务编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xcode和相关代码"><span class="nav-text">xcode和相关代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS8之后定位的一些注意事项"><span class="nav-text">iOS8之后定位的一些注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位服务未开启或者被用户真正拒绝情况下的情况处理"><span class="nav-text">定位服务未开启或者被用户真正拒绝情况下的情况处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取位置信息"><span class="nav-text">获取位置信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地理编码和反地理编码"><span class="nav-text">地理编码和反地理编码</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shy-boy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://shenyinghao.github.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"shenyinghao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script type="text/javascript">
+ var duoshuo_user_ID = 0
+    </script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("sbYM1hWki8h5khoATb32K4Da-gzGzoHsz", "SiRsojqFxRYpsvsQ53WNFbxr");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("sbYM1hWki8h5khoATb32K4Da-gzGzoHsz", "SiRsojqFxRYpsvsQ53WNFbxr");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + ': 0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+	});
+}
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+});
+</script>
+
+  
+</body>
+</html>
